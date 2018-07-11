@@ -1,0 +1,26 @@
+{
+  "name": "jenkins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0"
+  }
+}
