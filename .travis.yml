@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 language: node_js
 node_js:
 - '8'
@@ -26,12 +25,3 @@ after_success:
 - chmod 600 ~/.ssh/zt123123_rsa
 - ssh centos -o StrictHostKeyChecking=no 'cd ~/node-pro && npm install --production && npm start'
 
-=======
-# travis.yml
-language: node_js   #前端工程所以是JavaScript，编译环境是node_js
-node_js:
-- '8'   #指定node版本
-branchs:
-  only:
-  - master  #指定只有检测到master分支有变动时才执行任务
->>>>>>> 2a46fac0e36c56410d79336633759474d16c0ae1
