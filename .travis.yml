@@ -24,4 +24,4 @@ after_success:
   ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
 - cat ~/.ssh/config
-- ssh centos 'cd ~/project && npm install --production && npm start'
+- ssh root@192.168.8.129 -o StrictHostKeyChecking=no 'cd ~/project && npm install --production && npm start'
