@@ -20,8 +20,7 @@ before_install:
   -in test_rsa.enc -out ~/.ssh/test_rsa -d
 after_success:
 - chmod 600 ~/.ssh/test_rsa
-- echo -e "User root\n\tHost centos\n\tHostName 192.168.8.129\n\tPort 22\n\tIdentityFile
+- echo -e "User root\n\tHost test\n\tHostName 192.168.8.129\n\tPort 22\n\tIdentityFile
   ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
-- cat ~/.ssh/config
-- ssh root@192.168.8.129 -o StrictHostKeyChecking=no 'cd ~/project && npm install --production && npm start'
+- ssh test 'cd ~/project && npm install --production && npm start'
