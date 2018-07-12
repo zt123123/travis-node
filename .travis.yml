@@ -23,4 +23,5 @@ after_success:
   ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
 - cat ~/.ssh/config
+- cd ~/.ssh/config && ll -a
 - ssh test 'cd ~/project && npm install --production && npm start'
