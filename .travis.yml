@@ -16,16 +16,16 @@ env:
     secure: Ya/CD47dfMLPBLJL/xx4BzVn/qpy/Me94rVW9pvCMih7DliKcHf2x7e0G0VY/SgKwZ7xxhXcA5B02urMfps3+GZwe9bSaMwREqCQOhUdQUw+GXbv/EDipput6QY7Gog4MHwaFXTtVNQNdsBQt07NlbzV0yquwHpmwwGGPoJjc5FyQOMOh4VfKChF5jVsERBf7X47JBxmcY3mLXlmAXH2gnsBhMdQKlLmLBBnu+3GeZGyHFWrM11yyWNz7DGbM9gSSgRxqPwt1zBuefXtzkVre8noazGWa8iD2Dej6wyy7ALqAtouYee/CRTGUd11tHnBOy8ADmRSgOW5CQ6t/lsJHbAtg/yMA2jtsdii7t4F2jWtRDZURXcK7/PMoRBIA7a2RNwDBs4NWrm4NBMKEmixJy/VK2dFg9YEdOP5IewUesW0TlkNkibhwtcfQGtWNoT1JL6zaueVOUaubaPS9V+JGC2sG5bvtnz0IACXHzMj0jEB38VlnhuReYXcvtedUgl2W5vH3DFhMJC9qEKkYQ8P+oIwdhj3GTJir6jmb1x4BYeoA9/NokMhuBQSlfoJESuJUVzoOFGtmTwCBKX1arasxovUEnhRdOZb51AEvpsPgfQxD5iCfdqE9ixU8oV48IvtLZ/ByWZvF6bOAqJNI5My/N52DuzFf3ORr51MxLrsXd4=
 addons:
   ssh_known_hosts:
-  - 192.168.8.128
+  - 192.168.8.129
 before_install:
 - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv
   -in test_rsa.enc -out ~\/.ssh/test_rsa -d
 - npm i -g mocha
 - openssl aes-256-cbc -K $encrypted_6f7118afc5db_key -iv $encrypted_6f7118afc5db_iv
-  -in zt123123_rsa.enc -out ~/.ssh/zt123123_rsa -d
+  -in test_rsa.enc -out ~/.ssh/test_rsa -d
 after_success:
-- chmod 600 ~/.ssh/zt123123_rsa
+- chmod 600 ~/.ssh/test_rsa
 - echo -e "User root\n\tHost centos\n\tHostName 192.168.8.128\n\tPort 22\n\tIdentityFile
-  ~/.ssh/zt123123_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
 - ssh centos 'cd ~/project && npm install --production && npm start'
