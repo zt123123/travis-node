@@ -23,5 +23,6 @@ before_install:
   -in zt123123_rsa.enc -out ~/.ssh/zt123123_rsa -d
 after_success:
 - chmod 600 ~/.ssh/zt123123_rsa
-- ssh root@192.168.8.128 -o StrictHostKeyChecking=no 'cd ~/node-pro && npm install --production && npm start'
+- echo -e "User root\n\tHost centos\n\tHostName 192.168.8.128\n\tPort 22\n\tIdentityFile ~/.ssh/zt123123_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh centos 'cd ~/project && npm install --production && npm start'
 
