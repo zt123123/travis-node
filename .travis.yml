@@ -19,9 +19,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv
   -in test_rsa.enc -out ~/.ssh/test_rsa -d
 after_success:
-- cat ~/.ssh/test_rsa
 - chmod 600 ~/.ssh/test_rsa
 - echo -e "User root\n\tHost centos\n\tHostName 192.168.8.129\n\tPort 22\n\tIdentityFile
   ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
+- cat ~/.ssh/config
 - ssh centos 'cd ~/project && npm install --production && npm start'
