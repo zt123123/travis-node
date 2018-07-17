@@ -24,4 +24,6 @@ after_success:
 - echo -e "User root\n\tHost ezcp\n\tHostName 47.100.187.149\n\tPort 22\n\tIdentityFile
   ~/.ssh/ezcp_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
+- pwd
+- scp ./ ezcp:/usr/src/travis
 - ssh ezcp 'cd /usr/src/travis && npm install --production && npm start'
