@@ -14,14 +14,14 @@ cache:
   - node_modules
 addons:
   ssh_known_hosts:
-  - 192.168.8.129
+  - 47.100.187.149
+before_install:
+- openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv
+  -in ezcp_rsa.enc -out ~/.ssh/ezcp_rsa -d
 after_success:
-- cp test_rsa ~/.ssh
-- chmod 600 ~/.ssh/test_rsa
-- cat ~/.ssh/test_rsa
-- echo -e "User root\n\tHost test\n\tHostName 192.168.8.129\n\tPort 22\n\tIdentityFile
-  ~/.ssh/test_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- chmod 600 ~/.ssh/ezcp_rsa
+- cat ~/.ssh/ezcp_rsa
+- echo -e "User root\n\tHost ezcp\n\tHostName 47.100.187.149\n\tPort 22\n\tIdentityFile
+  ~/.ssh/ezcp_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
-- cat ~/.ssh/config
-- cd ~/.ssh && ll -a
-- ssh test 'cd ~/project && npm install --production && npm start'
+- ssh ezcp 'cd /usr/src/travis && npm install --production && npm start'
