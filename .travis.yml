@@ -14,15 +14,13 @@ cache:
   - node_modules
 addons:
   ssh_known_hosts:
-  - 47.100.187.149
-before_install:
-- openssl aes-256-cbc -K $encrypted_afb3f4a0fd37_key -iv $encrypted_afb3f4a0fd37_iv
-  -in ezcp_rsa.enc -out ~/.ssh/ezcp_rsa -d
+  - 39.108.170.7
 after_success:
-- chmod 600 ~/.ssh/ezcp_rsa
-- cat ~/.ssh/ezcp_rsa
-- echo -e "User root\n\tHost ezcp\n\tHostName 47.100.187.149\n\tPort 22\n\tIdentityFile
-  ~/.ssh/ezcp_rsa\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- chmod 600 ~/.ssh/jianshu
+- echo -e "User root\n\tHost jianshu\n\tHostName 39.108.170.7\n\tPort 22\n\tIdentityFile
+  ~/.ssh/jianshu\n\tProtocol 2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - chmod 644 ~/.ssh/config
-- scp -r `ls | grep -v node_modules` ezcp:/usr/src/travis
-- ssh ezcp 'cd /usr/src/travis && npm install --production && node app.js'
+- ssh jianshu 'cd /home/wwwroot/ && touch travis_test_ok'
+before_install:
+- openssl aes-256-cbc -K $encrypted_4cf349d53060_key -iv $encrypted_4cf349d53060_iv
+  -in jianshu.enc -out ~/.ssh/jianshu -d
